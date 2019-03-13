@@ -1,6 +1,6 @@
 // Test away
 import React from 'react';
-import { render } from 'react-testing-library';
+import { render, fireEvent } from 'react-testing-library';
 import renderer from 'react-test-renderer';
 import 'react-testing-library/cleanup-after-each';
 
@@ -11,5 +11,18 @@ describe('<Dashboard />', () => {
         const tree = renderer.create(<Dashboard />)
 
         expect(tree.toJSON()).toMatchSnapshot()
+    })
+})
+
+describe('<Dashboard', () => {
+    it('should show button text changes when clicked ', () => {
+        const { getByText } = render(<Dashboard />);
+
+
+        const closeButton = getByText(/close gate/i)
+        fireEvent.click(closeButton)
+
+        expect(closeButton).not.toBe(/close gate/i)
+
     })
 })

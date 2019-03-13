@@ -1,6 +1,6 @@
 // Test away!
 import React from 'react';
-import { render } from 'react-testing-library';
+import { render, fireEvent } from 'react-testing-library';
 
 import Controls from './Controls';
 
@@ -13,11 +13,12 @@ describe('<Controls />', () => {
         expect(lockButton).toBeDefined();
     })
 
-    it('should provide a gate button', () => {
+    it('should provide a close button', () => {
         const { getByTestId } = render(<Controls />);
 
-        const gateButton = getByTestId('gateButton');
+        const closeButton = getByTestId('closeButton');
 
-        expect(gateButton).toBeDefined();
+        expect(closeButton).toBeDefined();
     })
 })
+
